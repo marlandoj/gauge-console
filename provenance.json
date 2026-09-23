@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/marlandoj/gauge",
+  "commit": "49b2aa5cc4abd11c98ce35b0b6fd9d2ee9c66621",
+  "classifier_version": "gauge-0.3.0",
+  "bun_version": "1.3.12",
+  "files": {
+    "vendor/gauge/classifier.ts": {
+      "upstream_path": "src/classifier.ts",
+      "sha256": "6d6bbc69cdb5eaca016516eeaf9de6062aa3a4043d24401034b935ac3f29776e"
+    },
+    "tests/fixtures/development.jsonl": {
+      "upstream_path": "evaluation/development.jsonl",
+      "sha256": "6237b1eb765815a9415321ada616baabd4007c03d5cb57a43329c3c1ac3dc01b"
+    },
+    "tests/fixtures/heldout.jsonl": {
+      "upstream_path": "evaluation/heldout.jsonl",
+      "sha256": "5170b559cbd44b02010ef6afd85a183b4f90a2d2af5ce50a2fb48cd4f16a0013"
+    }
+  },
+  "publication_scope": "Owner-authorized release of classifier and synthetic evaluation fixtures only; parent repository remains private."
+}

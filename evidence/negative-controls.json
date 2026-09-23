@@ -1,0 +1,17 @@
+{
+  "clean_install_check": "pass",
+  "tamper_checks": [
+    {
+      "mutated": "public/classifier.js",
+      "correctly_rejected": true
+    },
+    {
+      "mutated": "vendor/gauge/classifier.ts",
+      "correctly_rejected": true
+    },
+    {
+      "mutated": "tests/fixtures/heldout.jsonl",
+      "correctly_rejected": true
+    }
+  ]
+}

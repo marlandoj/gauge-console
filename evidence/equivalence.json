@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "source_commit": "49b2aa5cc4abd11c98ce35b0b6fd9d2ee9c66621",
+  "classifier_version": "gauge-0.3.0",
+  "artifact_sha256": "128c5ce5a00e9975528a1b07f41dd06e1086c0c9358c9c924e85946031035a54",
+  "cohort_cases": 80,
+  "adversarial_cases": 32,
+  "matched": 112,
+  "mismatches": 0,
+  "equivalence_percent": 100,
+  "observed_label_accuracy": {
+    "development": {
+      "correct": 60,
+      "total": 60,
+      "percent": 100
+    },
+    "heldout": {
+      "correct": 11,
+      "total": 20,
+      "percent": 55
+    }
+  },
+  "note": "Port equivalence is not predictive accuracy. The original held-out set is historical diagnostic material, not an unseen v0.3.0 test."
+}

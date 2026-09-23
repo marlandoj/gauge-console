@@ -1,0 +1,17 @@
+{
+  "name": "gauge-console",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": { "bun": "1.3.12" },
+  "scripts": {
+    "build": "bun scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "bun scripts/verify.mjs",
+    "check": "bun run typecheck && bun run test",
+    "verify:upstream": "bun scripts/verify-upstream.mjs",
+    "verify:serve": "bun scripts/browser-server.mjs"
+  },
+  "devDependencies": { "typescript": "5.9.3" }
+}
