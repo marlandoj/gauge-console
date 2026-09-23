@@ -6,7 +6,7 @@
     "strict": true,
     "types": [],
     "noEmit": true,
-    "lib": ["ES2022", "DOM"]
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
   },
-  "include": ["vendor/gauge/classifier.ts"]
+  "include": ["vendor/gauge/classifier.ts", "src/**/*.ts"]
 }

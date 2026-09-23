@@ -2,7 +2,19 @@
 
 A one-screen browser console for understanding Gauge's deterministic task-complexity assessment. Built for Hackyard Yard #3 by Marlandoj.
 
-**Current milestone: classifier scaffold and equivalence gate.** The interface, receipt ledger, cohort replay and deployment are subsequent milestones. This repository does not yet contain a finished app or live demo.
+**Current milestone: working one-screen interface.** Enter a task or try an example to see its tier, exact fired reason codes and plain-language explanations. The dial supports all five tiers and abstention. The seven-harness selector shows metadata and resolver mapping only. Receipt ledger, cohort replay and deployment are subsequent milestones; no live demo is deployed yet.
+
+## Try locally
+
+```sh
+bun install --frozen-lockfile
+bun run check
+bun run dev
+```
+
+Open the loopback URL printed by `dev`. It serves the committed `public/` directory at both `/` and `/gauge-console/` to exercise GitHub Pages subpath compatibility. It has no classification API. The page imports its pinned engine locally, with no external fonts, scripts, analytics or task uploads. Stop the development server with Ctrl-C.
+
+Edit `src/app.ts`, then run `bun run build`. CI rejects a stale `public/app.js` and checks the original classifier snapshot separately. CSS and HTML live directly in `public/`.
 
 ## Verify
 
@@ -25,7 +37,7 @@ bun run verify:serve
 
 ## Source and boundaries
 
-The TypeScript in `vendor/gauge/classifier.ts` is copied **verbatim** from Gauge commit `49b2aa5cc4abd11c98ce35b0b6fd9d2ee9c66621`. [provenance.json](provenance.json) records exact paths, hashes and compiler version. The generated ESM file has a provenance header. The app will import this exact module; it needs no API, provider key, resolver, or server for classification.
+The TypeScript in `vendor/gauge/classifier.ts` is copied **verbatim** from Gauge commit `49b2aa5cc4abd11c98ce35b0b6fd9d2ee9c66621`. [provenance.json](provenance.json) records exact paths, hashes and compiler version. The generated ESM file has a provenance header. The app imports this exact module; it needs no API, provider key, resolver, or server for classification.
 
 `classify(unknown)` returns `{ tier, reasons, abstained }`. Tiers are trivial, simple, moderate, complex and apex; `swarmTier()` maps apex to complex. Seven harness IDs are exported as metadata. This scaffold does not invoke harnesses, choose models or change production routing.
 
@@ -39,6 +51,8 @@ The Gauge owner authorized publishing this classifier and its synthetic fixtures
 
 Upstream history first records this classifier on September 23, 2026 at 8:39 AM Arizona; v0.3.0's classifier change is recorded at 10:41 AM Arizona that day. Both fall inside Yard #3's September 21–25 build window. Commit timestamps show recorded history, not independent proof of when every line was originally authored. Repository creation alone is insufficient to establish eligibility. The new console source is authored during the build window.
 
-## Planned one-screen experience
+## One-screen experience
 
-Task input, tier dial, reason codes, harness metadata, synthetic cohort replay and browser-local digest receipts will share one view with no routed pages. GitHub Pages deployment and the required demo video are later milestones.
+Task input, tier dial, reason codes and harness metadata share one view with no routed pages. Assessment is debounced by 220 ms; the button and Ctrl/⌘+Enter assess immediately. Input over 100,000 characters is retained with an inline correction message. Keyboard focus, reduced motion, composition input and narrow-screen reflow are supported. The browser checks are documented in [UI verification](docs/ui-verification.md).
+
+Synthetic cohort replay and browser-local digest receipts will be added in later milestones, followed by GitHub Pages deployment and the required demo video.

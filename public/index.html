@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Inspect Gauge's task-complexity assessment in one screen. Local classification, visible reasoning, no task uploads.">
+  <meta name="theme-color" content="#f5f3ed">
+  <title>Gauge Console · Task complexity, explained</title>
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div class="brand"><img src="./mark.svg" width="36" height="36" alt=""><h1>Gauge<span>Console</span></h1></div>
+      <p class="edition">A task-complexity instrument <span>YARD 03 / ONE SCREEN</span></p>
+    </header>
+    <div class="workbench">
+      <section class="input-panel" aria-labelledby="input-heading">
+        <div class="section-label"><span>INPUT</span><span class="local-label">Runs in your browser</span></div>
+        <h2 id="input-heading">What’s the task?</h2>
+        <p class="intro">Describe the work. See its complexity and the rules behind it.</p>
+        <form id="task-form">
+          <label for="task">Task description</label>
+          <textarea id="task" rows="6" spellcheck="false" aria-describedby="input-hint input-error" disabled placeholder="For example: Build an API endpoint with pagination and error handling."></textarea>
+          <div class="input-meta"><span id="input-hint">Updates as you type · Ctrl / ⌘ + Enter to assess</span><span id="character-count">0 characters</span></div>
+          <p id="input-error" class="input-error" hidden></p>
+          <div class="actions"><button id="assess" type="submit" class="primary" disabled>Assess task <span aria-hidden="true">↗</span></button><button id="clear" type="button" class="quiet" disabled>Clear</button></div>
+        </form>
+        <fieldset class="examples" disabled>
+          <legend>Or try an example</legend>
+          <button type="button" data-example="lookup">Quick lookup</button>
+          <button type="button" data-example="feature">API feature</button>
+          <button type="button" data-example="systems">System migration</button>
+          <button type="button" data-example="proof">Research proof</button>
+        </fieldset>
+        <div class="harness-block">
+          <label for="harness">Harness context <span>Metadata only</span></label>
+          <select id="harness" disabled><option value="">Loading harnesses…</option></select>
+          <p id="mapping">Harness choice labels the assessment. It does not change the tier.</p>
+        </div>
+      </section>
+      <section class="result-panel" aria-labelledby="result-heading" data-state="loading">
+        <div class="section-label"><span id="result-heading">ASSESSMENT</span><span id="engine-state">Loading engine</span></div>
+        <div class="dial" aria-hidden="true">
+          <svg viewBox="0 0 560 310" focusable="false">
+            <path class="dial-track" d="M 65 253 A 220 220 0 0 1 495 253"/>
+            <g id="dial-ticks"></g>
+            <g id="dial-labels"></g>
+            <g id="needle"><path d="M 276 285 L 280 107 L 284 285 Z"/><circle cx="280" cy="285" r="10"/><circle class="needle-pin" cx="280" cy="285" r="3"/></g>
+          </svg>
+        </div>
+        <div class="reading" role="status" aria-live="polite" aria-atomic="true">
+          <p id="reading-label" class="eyebrow">CLASSIFIER</p>
+          <h3 id="tier">Loading</h3>
+          <p id="tier-description">Preparing the local assessment engine.</p>
+        </div>
+        <div class="result-meta"><span id="assessment-origin">No task assessed</span><span id="duration">—</span></div>
+        <div class="reasons" aria-labelledby="reasons-heading">
+          <div class="reason-heading"><h3 id="reasons-heading">Why this result</h3><span id="reason-count">0 rules fired</span></div>
+          <div id="reason-list"><p class="muted">Matched rules will appear here.</p></div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span class="version" id="version">GAUGE / LOCAL ENGINE</span>
+      <p>Experimental, deterministic rules. No AI model call. Your task stays in this page.</p>
+      <details id="method"><summary>How to read this</summary><div class="method-body"><p>The dial shows a complexity tier, not confidence, cost or model quality. Gauge can abstain when the request lacks context or matches no recognized rule.</p><p>Harness selection is descriptive. No harness is invoked and no model is chosen. The resolver mapping is identical for all seven harnesses: apex maps to complex; other tiers stay the same.</p><p>No task history is stored. Refreshing clears your input. The browser module is pinned to Gauge v0.3.0 and checked for equivalence with the original classifier. Equivalence is not prediction accuracy.</p></div></details>
+    </footer>
+    <p id="boot-error" class="boot-error" role="alert">If the controls stay disabled, the engine could not load. Reload the page with JavaScript enabled.</p>
+    <noscript><p class="boot-error">Gauge needs JavaScript to assess tasks locally. Enable JavaScript and reload this page.</p></noscript>
+  </main>
+</body>
+</html>
